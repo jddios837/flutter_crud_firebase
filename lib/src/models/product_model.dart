@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-ProductModel productFromJson(String str) => ProductModel.fromJson(json.decode(str));
+ProductModel productModelFromJson(String str) => ProductModel.fromJson(json.decode(str));
 
-String productToJson(ProductModel data) => json.encode(data.toJson());
+String productModelToJson(ProductModel data) => json.encode(data.toJson());
+
+String productModelToJsonUpdate(ProductModel data) => json.encode(data.toJsonUpdate());
 
 class ProductModel {
     String id;
@@ -33,6 +35,13 @@ class ProductModel {
 
     Map<String, dynamic> toJson() => {
         "id"        : id,
+        "titulo"    : titulo,
+        "valor"     : valor,
+        "disponible": disponible,
+        "fotoUrl"   : fotoUrl,
+    };
+
+    Map<String, dynamic> toJsonUpdate() => {
         "titulo"    : titulo,
         "valor"     : valor,
         "disponible": disponible,
